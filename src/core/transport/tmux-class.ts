@@ -486,8 +486,18 @@ export class Tmux {
     await hostExec(cmd, this.host);
   }
 
+  /**
+   * #46 — `-p` honors the pane's bracketed-paste request. Without it tmux
+   * strips the \x1b[200~ framing a TUI (Claude Code / Codex) asked for, so
+   * embedded line breaks arrive as raw CR = Enter keypresses: any chunk-seam
+   * stall mid-paste submits the accumulated HEAD as a premature message and
+   * only the tail ships as the delivered text (head-truncation, both
+   * directions). With `-p` tmux adds the framing only when the app requested
+   * the mode, so panes without bracketed paste behave exactly as before.
+   * Gate: scripts/poison-46-head-truncation.ts (seen failing pre-fix).
+   */
   async pasteBuffer(target: string): Promise<void> {
-    await this.run("paste-buffer", "-t", target);
+    await this.run("paste-buffer", "-p", "-t", target);
   }
 
   /**

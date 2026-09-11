@@ -281,7 +281,7 @@ describe("tmux-class isolated coverage", () => {
       { subcommand: "select-layout", args: ["-t", "home", "tiled"] },
       { subcommand: "send-keys", args: ["-t", "home:0", "C-c", "Enter"] },
       { subcommand: "send-keys", args: ["-t", "home:0", "-l", "hello"] },
-      { subcommand: "paste-buffer", args: ["-t", "home:0"] },
+      { subcommand: "paste-buffer", args: ["-p", "-t", "home:0"] },
       { subcommand: "set-environment", args: ["-t", "home", "MAW_ROLE", "oracle"] },
       { subcommand: "set-option", args: ["-t", "home", "status", "off"] },
       { subcommand: "set", args: ["-t", "home", "remain-on-exit", "on"] },

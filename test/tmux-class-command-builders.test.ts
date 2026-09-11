@@ -225,7 +225,7 @@ describe("Tmux command wrapper coverage", () => {
       "set-window-option -t s:0 synchronize-panes on",
       "send-keys -t s:0.1 C-c Enter",
       "send-keys -t s:0.1 -l hello world",
-      "paste-buffer -t s:0.1",
+      "paste-buffer -p -t s:0.1",
       "set-environment -t s MAW_TEST 1",
       "set-option -t s status off",
       "set -t s status-style bg=colour235,fg=colour248",
