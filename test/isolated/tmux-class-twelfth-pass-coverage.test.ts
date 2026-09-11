@@ -84,7 +84,7 @@ describe("tmux-class twelfth-pass isolated coverage", () => {
       { subcommand: "select-layout", args: ["-t", "alpha:main", "tiled"] },
       { subcommand: "send-keys", args: ["-t", "alpha:main.0", "C-c", "Enter"] },
       { subcommand: "send-keys", args: ["-t", "alpha:main.0", "-l", "literal | text"] },
-      { subcommand: "paste-buffer", args: ["-t", "alpha:main.0"] },
+      { subcommand: "paste-buffer", args: ["-p", "-t", "alpha:main.0"] },
       { subcommand: "set-environment", args: ["-t", "alpha", "MAW_TEST", "1"] },
     ]);
   });
